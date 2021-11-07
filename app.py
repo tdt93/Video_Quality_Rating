@@ -107,7 +107,7 @@ def show_play_btn(event):
 
 # plays chosen video
 def play_vid(number):
-    #os.system("ffplay -fs -autoexit " + vid_queue[number])
+    os.system("ffplay -fs -autoexit " + vid_queue[number])
     result.append(vid_queue[number])
     play_btn.place_forget()
     choice_1.place(x=70, y=140)
@@ -123,7 +123,7 @@ def play_vid(number):
 def play_next(number):
     global step
     if len(choice.get()) != 0:
-        #os.system("ffplay -fs -autoexit " + vid_queue[number])
+        os.system("ffplay -fs -autoexit " + vid_queue[number])
         result.append(choice.get())
         result.append(vid_queue[number])
         choice.set("")
