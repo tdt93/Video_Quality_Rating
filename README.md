@@ -12,7 +12,7 @@ A simple app to watch and rate given videos based on the quality.
     + Type: *system variables*, open: **Edit the system environment variables**
     + Click **Environment variables**
     + In **System variables**, select *Path*, select *Edit*
-    + Add the path of FFmpeg above to the list by click *New*
+    + Add the path of FFmpeg folder above to the list by click *New*
     + Click *OK* to save changes
     
 + The program requires **Pillow Image Library**
