@@ -40,10 +40,10 @@ title_text.image = title
 title_text.place(x=130, y=5)
 
 registration_text = tk.Label(root, text="Student ID: ", bg="#000000", fg="#ffffff", font=8)
-registration_text.place(x=255, y=120)
+registration_text.place(x=255, y=140)
 
 registration_box = tk.Entry(root, width=15, bg="#564d4d", fg="#ffffff", font=8, borderwidth=0)
-registration_box.place(x=225, y=145)
+registration_box.place(x=225, y=165)
 
 # sets buttons style
 btn_style = ttk.Style()
@@ -64,8 +64,8 @@ choice_4 = ttk.Radiobutton(root, text="NICE", variable=choice, value="NICE", sty
 choice_5 = ttk.Radiobutton(root, text="GREAT", variable=choice, value="GREAT", style="TRadiobutton")
 group_1 = ttk.Radiobutton(root, text="Group 1", variable=choice, value="Group 1", style="TRadiobutton")
 group_2 = ttk.Radiobutton(root, text="Group 2", variable=choice, value="Group 2", style="TRadiobutton")
-group_1.place(x=210, y=175)
-group_2.place(x=295, y=175)
+group_1.place(x=210, y=195)
+group_2.place(x=295, y=195)
 
 
 # finishes testing
@@ -134,7 +134,7 @@ def play_next(number):
 
 
 registration_btn = ttk.Button(root, text="Register", command=lambda: show_play_btn(True))
-registration_btn.place(x=242, y=220)
+registration_btn.place(x=242, y=240)
 
 desc_text_1 = tk.Label(root, text=description_1, justify=LEFT, anchor="w", bg="#000000", fg="#ffffff")
 desc_text_2 = tk.Label(root, text=description_2, justify=LEFT, anchor="w", bg="#000000", fg="#ffffff")
