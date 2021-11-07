@@ -16,7 +16,7 @@ A simple app to watch and rate given videos based on the quality.
     + Click *OK* to save changes
     
 + The program requires **Pillow Image Library**
-  > pip install Pillow
+  > python -m pip install Pillow
   
 ## Testing:
 
