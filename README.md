@@ -36,5 +36,7 @@ The program is given to the two group to test.
 + **Monday Group**: Will be shown vary videos with different quality. (Select **Monday Group** when entering **ID**)
 + **Thursday Group**: Will be the same video but with different quality. (Select **Thursday Group** when entering **ID**)
 
+To run the application, open **Command Prompt** where the application located, type: `python app.py`
+
 After each video, observer will be asked to rate the quality of the watched video. 
 The result of the test will be saved to *result.csv* file.
