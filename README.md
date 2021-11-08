@@ -25,6 +25,10 @@ A simple app to watch and rate given videos based on the quality.
   + To install the libraries (On both **Windows** and **MacOS**), open **Command Prompt**:   
     + For **pip Library**: `python -m ensurepip --upgrade`, more detail can be found on [pip documentation](https://pip.pypa.io/en/stable/installation/) 
     + For **Pillow Image Library**: `python -m pip install Pillow` 
+
++ **Sample videos**: 
+  + Download the sample videos for testing [here](https://drive.google.com/file/d/1k450SHWLSetcTSNZAjt4L-QEAmXzGuu2/view?usp=sharing)
+  + Extract the folder and copy the **videos** (not their folders) into their according folders where the application located (**Monday Group** and **Thursday Group**)
   
 ## Testing:
 
