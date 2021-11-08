@@ -10,10 +10,11 @@ from PIL import ImageTk, Image
 
 
 # sets variable
+
 vid_queue = []
-description_1 = "INSTRUCTIONS: \n \n 1. Enter your Student ID \n 2. Watch short videos: \n" \
+description_1 = "INSTRUCTIONS: \n \n 1. Enter your Student ID and choose \n your group \n 2. Watch short videos: \n" \
                 "     - [SPACE] to pause video \n "\
-                "    - [ESC] to quit \n "
+                "    - [ESC] to quit "
 description_2 = "\n \n 3. Rate each video base on your satisfaction " \
                 "\n 4. Press [CONTINUE] to progress \n until done \n 5. Press [DONE] to finish "
 step = 0
@@ -62,10 +63,10 @@ choice_2 = ttk.Radiobutton(root, text="MEH", variable=choice, value="MEH", style
 choice_3 = ttk.Radiobutton(root, text="OK", variable=choice, value="OK", style="TRadiobutton")
 choice_4 = ttk.Radiobutton(root, text="NICE", variable=choice, value="NICE", style="TRadiobutton")
 choice_5 = ttk.Radiobutton(root, text="GREAT", variable=choice, value="GREAT", style="TRadiobutton")
-group_1 = ttk.Radiobutton(root, text="Group 1", variable=choice, value="Group 1", style="TRadiobutton")
-group_2 = ttk.Radiobutton(root, text="Group 2", variable=choice, value="Group 2", style="TRadiobutton")
-group_1.place(x=210, y=195)
-group_2.place(x=295, y=195)
+group_1 = ttk.Radiobutton(root, text="Monday Group", variable=choice, value="Monday Group", style="TRadiobutton")
+group_2 = ttk.Radiobutton(root, text="Thursday Group", variable=choice, value="Thursday Group", style="TRadiobutton")
+group_1.place(x=150, y=195)
+group_2.place(x=320, y=195)
 
 
 # finishes testing
@@ -95,9 +96,9 @@ def show_play_btn(event):
             group_2.place_forget()
             # changes curr dir
             if choice.get() == "Group 1":
-                os.chdir("./Vid_gr_1")
+                os.chdir("./Monday Group")
             else:
-                os.chdir("./Vid_gr_2")
+                os.chdir("./Thursday Group")
             choice.set("")
             # gets the video queue
             for file in os.listdir():
