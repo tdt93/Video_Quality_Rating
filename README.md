@@ -5,17 +5,26 @@ A simple app to watch and rate given videos based on the quality.
 
 + **ffmpeg**: A collection of libraries and tools to process multimedia content such as audio, video, subtitles and related metadata.
   + To check if **ffmpeg** is installed, open **Command Prompt**, type: `ffmpeg`
-  + To install: Go to [**FFmpeg** download page](https://www.ffmpeg.org/download.html).
-    1. Download the campatible version for your OS, extract the folder.
-    2. Rename the folder to: FFmpeg
-    3. Copy/Cut folder to **C Drive** (C:\)
-    4. Open **Environment variables control panel**:
+  + To install: Go to [**FFmpeg** download page](https://www.ffmpeg.org/download.html). Download the campatible version for your OS, extract the folder.
+     
+   On **WINDOWS:**
+    1. Rename the folder to: FFmpeg
+    2. Copy/Cut folder to **C Drive** (C:\)
+    3. Open **Environment variables control panel**:
         + Open search bar
         + Type: *system variables*, open: **Edit the system environment variables**
         + Click **Environment variables**
         + In **System variables**, select *Path*, select *Edit*
         + Add the path of FFmpeg folder above to the list by click *New*
-        + Click *OK* to save changes
+        + Click *OK* to save changes <br />
+
+    On **MacOS:**
+    1. Press `Command+Space`, and type Terminal.
+    2. Run the command below: 
+   
+      ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 2> /dev/null  
+    3. Enter your Mac's user password if needed and wait for the command to finish.
+    4. Run: `brew install ffmpeg`
     
 + **pip Library** and **Pillow Image Library** for **Python**:
   + To check if the libraries have been installed (On both **Windows** and **MacOS**), open **Command Prompt**:
@@ -35,6 +44,8 @@ A simple app to watch and rate given videos based on the quality.
 The program is given to the two group to test. 
 + **Monday Group**: Will be shown vary videos with different quality. (Select **Monday Group** when entering **ID**)
 + **Thursday Group**: Will be the same video but with different quality. (Select **Thursday Group** when entering **ID**)
+
+To run the application, open **Command Prompt** where the application located, type: `python app.py`
 
 After each video, observer will be asked to rate the quality of the watched video. 
 The result of the test will be saved to *result.csv* file.
