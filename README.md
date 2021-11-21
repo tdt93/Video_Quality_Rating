@@ -42,8 +42,8 @@ A simple app to watch and rate given videos based on the quality.
 ## Testing:
 
 The program is given to the two group to test. 
-+ **Monday Group**: Will be shown vary videos with different quality. (Select **Monday Group** when entering **ID**)
-+ **Thursday Group**: Will be the same video but with different quality. (Select **Thursday Group** when entering **ID**)
++ **Monday Group**: Select **Monday Group** when entering **ID**.
++ **Thursday Group**: Select **Thursday Group** when entering **ID**.
 
 To run the application, open **Command Prompt** where the application located, type: `python app.py`
 
