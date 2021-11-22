@@ -35,15 +35,17 @@ A simple app to watch and rate given videos based on the quality.
     + For **pip Library**: `python -m ensurepip --upgrade`, more detail can be found on [pip documentation](https://pip.pypa.io/en/stable/installation/) 
     + For **Pillow Image Library**: `python -m pip install Pillow` 
 
-+ **Sample videos**: 
-  + Download the sample videos for testing [here](https://drive.google.com/file/d/1k450SHWLSetcTSNZAjt4L-QEAmXzGuu2/view?usp=sharing)
-  + Extract the folder and copy the **videos** (not their folders) into their according folders where the application located (**Monday Group** and **Thursday Group**)
++ **Videos for experiment**: 
+  + Download the videos for testing:
+    +  [Monday Group](https://drive.google.com/file/d/1qTmiInYrBu5rGkOU-U6WCG969eW_mpIK/view?usp=sharing)
+    +  [Thursday Group](https://drive.google.com/file/d/1YMnzW6_iQvR777wGWbddLs7P6DrofgpI/view?usp=sharing)
+  + Extract the folder to the location where application is located (the folder should be named with the tittle `Monday_Group` or `Thursday_Group`)
   
 ## Testing:
 
 The program is given to the two group to test. 
-+ **Monday_Group**: Select **Monday Group** when entering **ID**.
-+ **Thursday_Group**: Select **Thursday Group** when entering **ID**.
++ **Monday_Group**: Select **Monday Group** when entering **Student ID**.
++ **Thursday_Group**: Select **Thursday Group** when entering **Student ID**.
 
 To run the application, open **Command Prompt** where the application located, type: `python app.py`
 
