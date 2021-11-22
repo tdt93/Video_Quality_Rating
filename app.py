@@ -91,16 +91,20 @@ def show_play_btn(event):
             group_1.place_forget()
             group_2.place_forget()
             # changes curr dir
-            if choice.get() == "Group 1":
+            if choice.get() == "Monday Group":
                 os.chdir("./Monday_Group")
             else:
                 os.chdir("./Thursday_Group")
-            choice.set("")
             # gets the video queue
             for file in os.listdir():
                 if file.endswith(".mp4"):
                     vid_queue.append(file)
             # generate random video sequence:
+            if choice.get() == "Thursday Group":
+                tmp = vid_queue.copy()
+                tmp.extend(tmp)
+                vid_queue.extend(tmp)
+            choice.set("")
             random.shuffle(vid_queue)
 
 
