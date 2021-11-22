@@ -92,9 +92,9 @@ def show_play_btn(event):
             group_2.place_forget()
             # changes curr dir
             if choice.get() == "Group 1":
-                os.chdir("./Monday Group")
+                os.chdir("./Monday_Group")
             else:
-                os.chdir("./Thursday Group")
+                os.chdir("./Thursday_Group")
             choice.set("")
             # gets the video queue
             for file in os.listdir():
