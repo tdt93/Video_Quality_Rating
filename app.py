@@ -15,12 +15,15 @@ from PIL import ImageTk, Image
 vid_queue = []
 description_1 = "INSTRUCTIONS: \n \n 1. Enter your Student ID and choose \n your group \n 2. Watch short videos: \n" \
                 "     - [SPACE] to pause video \n "\
-                "    - [ESC] to quit \n \n 3. Rate each video base on your satisfaction " \
-                "\n 4. Press [CONTINUE] to progress \n until done \n 5. Lastly, to finish, answer the questionnaires" \
+                "    - [ESC] to quit "
+
+description_2 = "3. Rate each video base on your satisfaction " \
+                "\n4. Press [CONTINUE] to progress \n until done \n5. Lastly, to finish, answer the questionnaires" \
                 " by \n pressing [QUESTIONNAIRE] "
 step = 0
 result = []
 path = os.getcwd()
+
 url = "https://google.com"
 
 
@@ -28,7 +31,9 @@ url = "https://google.com"
 root = tk.Tk()
 root.title("Video Quality Rating")
 root.configure(bg="#000000")
-root.state("zoomed")
+root.wm_attributes("-fullscreen", "true")
+root.bind("<Escape>", lambda event: root.destroy())
+#root.state("zoomed")
 
 choice = StringVar()
 
@@ -64,7 +69,10 @@ registration_btn.place(relx=0.485, rely=0.7, anchor="center")
 # shows instructions
 desc_text_1 = tk.Label(root, text=description_1, justify=LEFT, anchor="w", bg="#000000",
                        fg="#ffffff", font=("Helvetica", 12))
-desc_text_1.place(relx=0.89, rely=0.5, anchor="center")
+desc_text_2 = tk.Label(root, text=description_2, justify=LEFT, anchor="w", bg="#000000",
+                       fg="#ffffff", font=("Helvetica", 12))
+desc_text_1.place(relx=0.4, rely=0.87, anchor="center")
+desc_text_2.place(relx=0.62, rely=0.89, anchor="center")
 
 # creates radio-buttons
 choice_1 = ttk.Radiobutton(root, text="BAD", variable=choice, value="BAD", style="TRadiobutton")
@@ -92,9 +100,11 @@ def show_play_btn(event):
             group_2.place_forget()
             # changes curr dir
             if choice.get() == "Monday Group":
-                os.chdir("./Monday_Group")
+                new_path = os.path.join(path, "Monday_Group")
+                os.chdir(new_path)
             else:
-                os.chdir("./Thursday_Group")
+                new_path = os.path.join(path, "Thursday_Group")
+                os.chdir(new_path)
             # gets the video queue
             for file in os.listdir():
                 if file.endswith(".mp4"):
@@ -110,7 +120,6 @@ def show_play_btn(event):
 
 # plays the 1st video
 def play_vid(number):
-    print(vid_queue)
     os.system("ffplay -fs -autoexit -fast " + vid_queue[number])
     result.append(vid_queue[number])
     play_btn.place_forget()
