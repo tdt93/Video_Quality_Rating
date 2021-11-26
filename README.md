@@ -15,8 +15,11 @@ A simple app to watch and rate given videos based on the quality.
         + Type: *system variables*, open: **Edit the system environment variables**
         + Click **Environment variables**
         + In **System variables**, select *Path*, select *Edit*
-        + Add the path of FFmpeg folder above to the list by click *New*
+        + In new **Edit environment variable** window, select *New*
+        + Copy and paste the path of the FFmpeg above here 
         + Click *OK* to save changes <br />
+        
+  More detail [here](https://windowsloop.com/install-ffmpeg-windows-10/)
 
     On **MacOS:**
     1. Press `Command+Space`, and type Terminal.
@@ -25,6 +28,8 @@ A simple app to watch and rate given videos based on the quality.
       ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 2> /dev/null  
     3. Enter your Mac's user password if needed and wait for the command to finish.
     4. Run: `brew install ffmpeg`
+    
+  More detail [here](http://trac.ffmpeg.org/wiki/CompilationGuide/macOS)
     
 + **pip Library** and **Pillow Image Library** for **Python**:
   + To check if the libraries have been installed (On both **Windows** and **MacOS**), open **Command Prompt**:
