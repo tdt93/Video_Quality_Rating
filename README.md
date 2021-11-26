@@ -39,7 +39,9 @@ A simple app to watch and rate given videos based on the quality.
   + Download the videos for testing:
     +  [Monday Group](https://drive.google.com/file/d/1qTmiInYrBu5rGkOU-U6WCG969eW_mpIK/view?usp=sharing)
     +  [Thursday Group](https://drive.google.com/file/d/1YMnzW6_iQvR777wGWbddLs7P6DrofgpI/view?usp=sharing)
-  + Extract the folder to the location where application is located (the folder should be named with the tittle `Monday_Group` or `Thursday_Group`)
+  + Extract the folder to the location where application is located (the folder should be named with the tittle `Monday_Group` or `Thursday_Group`). 
+  
+  For example: The directory to `Monday_Group` should be: `...\Video_Quality_Rating\Monday_Group\[videos_here]`
   
 ## Testing:
 
