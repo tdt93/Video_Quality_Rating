@@ -6,6 +6,7 @@ import os
 import csv
 import webbrowser
 import random
+import mysql
 
 from tkinter import LEFT, StringVar
 from PIL import ImageTk, Image
@@ -13,17 +14,23 @@ from PIL import ImageTk, Image
 
 # sets variable
 vid_queue = []
-description_1 = "INSTRUCTIONS: \n \n 1. Enter your Student ID and choose \n your group \n 2. Watch short videos: \n" \
-                "     - [SPACE] to pause video \n "\
+description_0 = "INSTRUCTIONS: "
+description_1 = "Enter your Student ID and choose your group. \n \n" \
+                "or press [ESC] to close the window"
+description_2 = "Watch short videos: \n \n" \
+                "    - [SPACE] to pause video \n"\
                 "    - [ESC] to quit "
+description_3 = "Rate each video base on your satisfaction \n \n" \
+                "Press [CONTINUE] to progress \nuntil done"
+description_4 = "Congrats, you are half way there! \n \n " \
+                "         Rate and let's continue..."
+description_5 = "Please finish rating and answer the questionnaires \n \n " \
+                "           by pressing [QUESTIONNAIRE]"
 
-description_2 = "3. Rate each video base on your satisfaction " \
-                "\n4. Press [CONTINUE] to progress \n until done \n5. Lastly, to finish, answer the questionnaires" \
-                " by \n pressing [QUESTIONNAIRE] "
 step = 0
+progress = 1
 result = []
 path = os.getcwd()
-
 url = "https://google.com"
 
 
@@ -33,7 +40,6 @@ root.title("Video Quality Rating")
 root.configure(bg="#000000")
 root.wm_attributes("-fullscreen", "true")
 root.bind("<Escape>", lambda event: root.destroy())
-#root.state("zoomed")
 
 choice = StringVar()
 
@@ -44,6 +50,9 @@ title = ImageTk.PhotoImage(logo)
 title_text = tk.Label(root, image=title, borderwidth=0)
 title_text.image = title
 title_text.place(relx=0.5, rely=0.1115, anchor="n")
+
+counter = tk.Label(root, text="Progress: 0/2", bg="#000000", fg="#db0000", font=("Helvetica", 18))
+counter.place(relx=0.485, rely=0.35, anchor="center")
 
 registration_text = tk.Label(root, text="Student ID: ", bg="#000000", fg="#ffffff", font=("Helvetica", 18))
 registration_text.place(relx=0.49, rely=0.5, anchor="center")
@@ -67,19 +76,28 @@ registration_btn = ttk.Button(root, text="Register", command=lambda: show_play_b
 registration_btn.place(relx=0.485, rely=0.7, anchor="center")
 
 # shows instructions
+desc_text_0 = tk.Label(root, text=description_0, justify=LEFT, anchor="w", bg="#000000",
+                       fg="#ffffff", font=("Helvetica", 14))
 desc_text_1 = tk.Label(root, text=description_1, justify=LEFT, anchor="w", bg="#000000",
                        fg="#ffffff", font=("Helvetica", 12))
 desc_text_2 = tk.Label(root, text=description_2, justify=LEFT, anchor="w", bg="#000000",
                        fg="#ffffff", font=("Helvetica", 12))
-desc_text_1.place(relx=0.4, rely=0.87, anchor="center")
-desc_text_2.place(relx=0.62, rely=0.89, anchor="center")
+desc_text_3 = tk.Label(root, text=description_3, justify=LEFT, anchor="w", bg="#000000",
+                       fg="#ffffff", font=("Helvetica", 12))
+desc_text_4 = tk.Label(root, text=description_4, justify=LEFT, anchor="w", bg="#000000",
+                       fg="#ffffff", font=("Helvetica", 16))
+desc_text_5 = tk.Label(root, text=description_5, justify=LEFT, anchor="w", bg="#000000",
+                       fg="#ffffff", font=("Helvetica", 16))
+
+desc_text_0.place(relx=0.8, rely=0.3, anchor="center")
+desc_text_1.place(relx=0.8, rely=0.35, anchor="center")
 
 # creates radio-buttons
 choice_1 = ttk.Radiobutton(root, text="BAD", variable=choice, value="BAD", style="TRadiobutton")
-choice_2 = ttk.Radiobutton(root, text="MEH", variable=choice, value="MEH", style="TRadiobutton")
-choice_3 = ttk.Radiobutton(root, text="OK", variable=choice, value="OK", style="TRadiobutton")
-choice_4 = ttk.Radiobutton(root, text="NICE", variable=choice, value="NICE", style="TRadiobutton")
-choice_5 = ttk.Radiobutton(root, text="GREAT", variable=choice, value="GREAT", style="TRadiobutton")
+choice_2 = ttk.Radiobutton(root, text="POOR", variable=choice, value="MEH", style="TRadiobutton")
+choice_3 = ttk.Radiobutton(root, text="FAIR", variable=choice, value="OK", style="TRadiobutton")
+choice_4 = ttk.Radiobutton(root, text="GOOD", variable=choice, value="NICE", style="TRadiobutton")
+choice_5 = ttk.Radiobutton(root, text="EXCELLENT", variable=choice, value="GREAT", style="TRadiobutton")
 group_1 = ttk.Radiobutton(root, text="Monday Group", variable=choice, value="Monday Group", style="TRadiobutton")
 group_2 = ttk.Radiobutton(root, text="Thursday Group", variable=choice, value="Thursday Group", style="TRadiobutton")
 group_1.place(relx=0.41, rely=0.61, anchor="center")
@@ -91,13 +109,17 @@ def show_play_btn(event):
     if len(registration_box.get()) != 0 and len(choice.get()) != 0:
         if event:
             play_btn.place(relx=0.485, rely=0.7, anchor="center")
+            desc_text_2.place(relx=0.8, rely=0.35, anchor="center")
             result.append(registration_box.get())
             result.append(choice.get())
+            result.append("Test_01")
+            desc_text_1.place_forget()
             registration_text.place_forget()
             registration_btn.place_forget()
             registration_box.place_forget()
             group_1.place_forget()
             group_2.place_forget()
+            counter.config(text="Progress: 1/2")
             # changes curr dir
             if choice.get() == "Monday Group":
                 new_path = os.path.join(path, "Monday_Group")
@@ -109,33 +131,38 @@ def show_play_btn(event):
             for file in os.listdir():
                 if file.endswith(".mp4"):
                     vid_queue.append(file)
-            # generate random video sequence:
+            # generate repetitive video sequence :
             if choice.get() == "Thursday Group":
                 tmp = vid_queue.copy()
                 tmp.extend(tmp)
                 vid_queue.extend(tmp)
-            choice.set("")
-            random.shuffle(vid_queue)
 
 
 # plays the 1st video
 def play_vid(number):
-    os.system("ffplay -fs -autoexit -fast " + vid_queue[number])
-    result.append(vid_queue[number])
-    play_btn.place_forget()
-    choice_1.place(relx=0.3, rely=0.54, anchor="center")
-    choice_2.place(relx=0.4, rely=0.54, anchor="center")
-    choice_3.place(relx=0.5, rely=0.54, anchor="center")
-    choice_4.place(relx=0.6, rely=0.54, anchor="center")
-    choice_5.place(relx=0.7, rely=0.54, anchor="center")
-    play_next_btn.place(relx=0.485, rely=0.7, anchor="center")
-    global step
-    step += 1
+    if len(choice.get()) != 0:
+        # generate random video sequence:
+        random.shuffle(vid_queue)
+        choice.set("")
+        os.system("ffplay -fs -autoexit -fast " + vid_queue[number])
+        result.append(vid_queue[number])
+        play_btn.place_forget()
+        desc_text_2.place_forget()
+        desc_text_4.place_forget()
+        desc_text_3.place(relx=0.8, rely=0.35, anchor="center")
+        choice_1.place(relx=0.3, rely=0.54, anchor="center")
+        choice_2.place(relx=0.4, rely=0.54, anchor="center")
+        choice_3.place(relx=0.5, rely=0.54, anchor="center")
+        choice_4.place(relx=0.6, rely=0.54, anchor="center")
+        choice_5.place(relx=0.7, rely=0.54, anchor="center")
+        play_next_btn.place(relx=0.485, rely=0.7, anchor="center")
+        global step
+        step += 1
 
 
 # plays the next video in the sequence
 def play_next(number):
-    global step
+    global step, progress
     if len(choice.get()) != 0:
         os.system("ffplay -fs -autoexit " + vid_queue[number])
         result.append(choice.get())
@@ -144,7 +171,16 @@ def play_next(number):
         step += 1
         if step >= len(vid_queue):
             play_next_btn.place_forget()
-            finish_btn.place(relx=0.485, rely=0.7, anchor="center")
+            if progress == 1:
+                step = 0
+                progress = 2
+                counter.config(text="Progress: 2/2")
+                desc_text_4.place(relx=0.485, rely=0.45, anchor="center")
+                play_btn.place(relx=0.485, rely=0.7, anchor="center")
+                result.append("Test_02")
+            else:
+                desc_text_5.place(relx=0.485, rely=0.45, anchor="center")
+                finish_btn.place(relx=0.485, rely=0.7, anchor="center")
 
 
 # finishes testing
