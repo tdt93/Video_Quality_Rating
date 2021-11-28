@@ -6,7 +6,7 @@ import os
 import csv
 import webbrowser
 import random
-import mysql
+import pymysql
 
 from tkinter import LEFT, StringVar
 from PIL import ImageTk, Image
@@ -26,12 +26,32 @@ description_4 = "Congrats, you are half way there! \n \n " \
                 "         Rate and let's continue..."
 description_5 = "Please finish rating and answer the questionnaires \n \n " \
                 "           by pressing [QUESTIONNAIRE]"
-
 step = 0
 progress = 1
 result = []
 path = os.getcwd()
 url = "https://google.com"
+
+# connect to database
+mydb = pymysql.connect(host="mysql.agh.edu.pl", port=3306, user="thang", passwd="rKPwvXqUNxX4meuv", database="thang")
+my_cursor = mydb.cursor()
+
+delete_existing_table = "drop table if exists students"
+create_student_table = """create table students(
+student_id int not null, groups varchar(20) not null, primary key (student_id));"""
+
+create_result_table = """create table expEvaluation(
+_id int auto_increment not null, student_id int, video_id varchar(50) not null, evaluation varchar(20) not null,
+primary key (_id), foreign key (student_id) references students(student_id));"""
+
+try:
+    my_cursor.execute(delete_existing_table)
+    print("table deleted")
+    my_cursor.execute(create_student_table)
+    my_cursor.execute(create_result_table)
+    print("new table created")
+except Exception as e:
+    print("Exception occurred: ", e)
 
 
 # creates window GUI
@@ -192,6 +212,7 @@ def finish_rating(event):
         writer = csv.writer(f)
         writer.writerow(result)
         f.close()
+        mydb.close()
         # opens questionnaire link
         webbrowser.open(url, new=0, autoraise=True)
         sys.exit(0)
