@@ -31,20 +31,33 @@ A simple app to watch and rate given videos based on the quality.
     
   More detail [here](http://trac.ffmpeg.org/wiki/CompilationGuide/macOS)
     
-+ **pip Library** and **Pillow Image Library** for **Python**:
-  + To check if the libraries have been installed (On both **Windows** and **MacOS**), open **Command Prompt**:
-    - To check for **pip Library**, type: `python -m pip --version` 
-    - To check for **Pillow Image Library**, type: `python -m PIL --version`
+    On **Linux:**
+    1. Open Terminal.
+    2. Run the command below: 
+   
+      sudo apt update
+      sudo apt install ffmpeg  
+    It might ask for additional disk space, type **Y**, and press **Enter**
+    
+  More detail [here](https://linuxhint.com/install-ffmpeg-ubuntu/)
+  
++ **pip Library**, **Pillow Image Library** and **PyMySQL package** for **Python**:
         
-  + To install the libraries (On both **Windows** and **MacOS**), open **Command Prompt**:   
+   To install the libraries, packages (On both **Windows** and **MacOS**), open **Command Prompt**:   
     + For **pip Library**: `python -m ensurepip --upgrade`, more detail can be found on [pip documentation](https://pip.pypa.io/en/stable/installation/) 
     + For **Pillow Image Library**: `python -m pip install Pillow` 
-
+    + For **PyMySQL package**: `python -m pip install PyMySQL`, more detail can be found on [PyMySQL](https://pypi.org/project/PyMySQL/)
+    
+   To install on **Linux**, open **Terminal**:
+    + For **pip Library**: `sudo apt install python3-pip`
+    + For **Pillow Image Library**: `sudo apt install python3-Pillow` 
+    + For **PyMySQL package**: `sudo apt install python3-pymysql` 
+    
 + **Videos for experiment**: 
   + Download the videos for testing:
-    +  [Monday Group](https://drive.google.com/file/d/1qTmiInYrBu5rGkOU-U6WCG969eW_mpIK/view?usp=sharing)
-    +  [Thursday Group](https://drive.google.com/file/d/1YMnzW6_iQvR777wGWbddLs7P6DrofgpI/view?usp=sharing)
-  + Extract the folder to the location where application is located (the folder should be named with the tittle `Monday_Group` or `Thursday_Group`). 
+    +  [Monday_Group.zip](https://drive.google.com/file/d/1qTmiInYrBu5rGkOU-U6WCG969eW_mpIK/view?usp=sharing)
+    +  [Thursday_Group.zip](https://drive.google.com/file/d/1YMnzW6_iQvR777wGWbddLs7P6DrofgpI/view?usp=sharing)
+  + Unzip the folder and relocate the unzipped one to where the **Video_Quality_Rating** is located (the folder should be named with the tittle `Monday_Group` or `Thursday_Group`). 
   
   For example: The directory to `Monday_Group` should be: `...\Video_Quality_Rating\Monday_Group\[videos_here]`
   
