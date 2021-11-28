@@ -26,32 +26,15 @@ description_4 = "Congrats, you are half way there! \n \n " \
                 "         Rate and let's continue..."
 description_5 = "Please finish rating and answer the questionnaires \n \n " \
                 "           by pressing [QUESTIONNAIRE]"
-step = 0
 progress = 1
+step = 0
 result = []
 path = os.getcwd()
 url = "https://google.com"
 
-# connect to database
-mydb = pymysql.connect(host="mysql.agh.edu.pl", port=3306, user="thang", passwd="rKPwvXqUNxX4meuv", database="thang")
-my_cursor = mydb.cursor()
-
-delete_existing_table = "drop table if exists students"
-create_student_table = """create table students(
-student_id int not null, groups varchar(20) not null, primary key (student_id));"""
-
-create_result_table = """create table expEvaluation(
-_id int auto_increment not null, student_id int, video_id varchar(50) not null, evaluation varchar(20) not null,
-primary key (_id), foreign key (student_id) references students(student_id));"""
-
-try:
-    my_cursor.execute(delete_existing_table)
-    print("table deleted")
-    my_cursor.execute(create_student_table)
-    my_cursor.execute(create_result_table)
-    print("new table created")
-except Exception as e:
-    print("Exception occurred: ", e)
+# connects to database
+db = pymysql.connect(host="mysql.agh.edu.pl", port=3306, user="thang", passwd="rKPwvXqUNxX4meuv", database="thang")
+my_cursor = db.cursor()
 
 
 # creates window GUI
@@ -110,7 +93,7 @@ desc_text_5 = tk.Label(root, text=description_5, justify=LEFT, anchor="w", bg="#
                        fg="#ffffff", font=("Helvetica", 16))
 
 desc_text_0.place(relx=0.8, rely=0.3, anchor="center")
-desc_text_1.place(relx=0.8, rely=0.35, anchor="center")
+desc_text_1.place(relx=0.8, rely=0.38, anchor="center")
 
 # creates radio-buttons
 choice_1 = ttk.Radiobutton(root, text="BAD", variable=choice, value="BAD", style="TRadiobutton")
@@ -129,7 +112,7 @@ def show_play_btn(event):
     if len(registration_box.get()) != 0 and len(choice.get()) != 0:
         if event:
             play_btn.place(relx=0.485, rely=0.7, anchor="center")
-            desc_text_2.place(relx=0.8, rely=0.35, anchor="center")
+            desc_text_2.place(relx=0.8, rely=0.38, anchor="center")
             result.append(registration_box.get())
             result.append(choice.get())
             result.append("Test_01")
@@ -151,17 +134,29 @@ def show_play_btn(event):
             for file in os.listdir():
                 if file.endswith(".mp4"):
                     vid_queue.append(file)
-            # generate repetitive video sequence :
+            # generates repetitive video sequence :
             if choice.get() == "Thursday Group":
                 tmp = vid_queue.copy()
                 tmp.extend(tmp)
                 vid_queue.extend(tmp)
+            # saves id to database
+            try:
+                my_cursor.execute("insert into students(student_id, groups)"
+                                  " values('%s', '%s')" % (registration_box.get(), choice.get()))
+                db.commit()
+                print("updated database successful")
+            except Exception as e:
+                db.rollback()
+                print("Exception occurred: ", e)
 
 
 # plays the 1st video
 def play_vid(number):
     if len(choice.get()) != 0:
-        # generate random video sequence:
+        if progress == 2:
+            result.append(choice.get())
+            save_result(vid_queue[-1], choice.get())
+        # generates random video sequence:
         random.shuffle(vid_queue)
         choice.set("")
         os.system("ffplay -fs -autoexit -fast " + vid_queue[number])
@@ -169,7 +164,7 @@ def play_vid(number):
         play_btn.place_forget()
         desc_text_2.place_forget()
         desc_text_4.place_forget()
-        desc_text_3.place(relx=0.8, rely=0.35, anchor="center")
+        desc_text_3.place(relx=0.8, rely=0.38, anchor="center")
         choice_1.place(relx=0.3, rely=0.54, anchor="center")
         choice_2.place(relx=0.4, rely=0.54, anchor="center")
         choice_3.place(relx=0.5, rely=0.54, anchor="center")
@@ -187,6 +182,7 @@ def play_next(number):
         os.system("ffplay -fs -autoexit " + vid_queue[number])
         result.append(choice.get())
         result.append(vid_queue[number])
+        save_result(vid_queue[number-1], choice.get())
         choice.set("")
         step += 1
         if step >= len(vid_queue):
@@ -207,15 +203,28 @@ def play_next(number):
 def finish_rating(event):
     if event and (len(choice.get()) != 0):
         result.append(choice.get())
+        save_result(vid_queue[step - 1], choice.get())
         os.chdir(os.path.dirname(os.getcwd()))
         f = open("result.csv", "a", newline="")
         writer = csv.writer(f)
         writer.writerow(result)
         f.close()
-        mydb.close()
+        db.close()
         # opens questionnaire link
         webbrowser.open(url, new=0, autoraise=True)
         sys.exit(0)
+
+
+# saves result to database
+def save_result(vid_id, rate):
+    try:
+        my_cursor.execute("insert into expEvaluation(student_id, video_id, evaluation)"
+                          " values('%s', '%s', '%s')" % (registration_box.get(), vid_id, rate))
+        db.commit()
+        print("updated database successful")
+    except Exception as e:
+        db.rollback()
+        print("Exception occurred: ", e)
 
 
 root.mainloop()
