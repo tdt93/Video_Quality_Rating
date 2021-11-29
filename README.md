@@ -8,7 +8,7 @@ A simple app to watch and rate given videos based on the quality.
   + To install: Go to [**FFmpeg** download page](https://www.ffmpeg.org/download.html). Download the campatible version for your OS, extract the folder.
      
    On **WINDOWS:**
-    1. Rename the folder to: FFmpeg
+    1. Rename the folder to: ffmpeg
     2. Copy/Cut folder to **C Drive** (C:\)
     3. Open **Environment variables control panel**:
         + Open search bar
@@ -16,7 +16,7 @@ A simple app to watch and rate given videos based on the quality.
         + Click **Environment variables**
         + In **System variables**, select *Path*, select *Edit*
         + In new **Edit environment variable** window, select *New*
-        + Copy and paste the path of the FFmpeg above here 
+        + Copy and paste the path to `...\ffmpeg\bin` from above here 
         + Click *OK* to save changes <br />
         
   More detail [here](https://windowsloop.com/install-ffmpeg-windows-10/)
