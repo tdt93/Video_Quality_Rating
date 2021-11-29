@@ -7,6 +7,8 @@ import csv
 import webbrowser
 import random
 import pymysql
+import time
+import datetime
 
 from tkinter import LEFT, StringVar
 from PIL import ImageTk, Image
@@ -28,6 +30,7 @@ description_5 = "Please finish rating and answer the questionnaires \n \n " \
                 "           by pressing [QUESTIONNAIRE]"
 progress = 1
 step = 0
+time_stamp = ""
 result = []
 path = os.getcwd()
 url = "https://google.com"
@@ -154,8 +157,10 @@ def show_play_btn(event):
 def play_vid(number):
     if len(choice.get()) != 0:
         if progress == 2:
+            get_curr_time()
             result.append(choice.get())
-            save_result(vid_queue[-1], choice.get())
+            result.append(time_stamp)
+            save_result(vid_queue[-1], choice.get(), time_stamp)
         # generates random video sequence:
         random.shuffle(vid_queue)
         choice.set("")
@@ -180,9 +185,11 @@ def play_next(number):
     global step, progress
     if len(choice.get()) != 0:
         os.system("ffplay -fs -autoexit " + vid_queue[number])
+        get_curr_time()
         result.append(choice.get())
+        result.append(time_stamp)
         result.append(vid_queue[number])
-        save_result(vid_queue[number-1], choice.get())
+        save_result(vid_queue[number-1], choice.get(), time_stamp)
         choice.set("")
         step += 1
         if step >= len(vid_queue):
@@ -202,8 +209,10 @@ def play_next(number):
 # finishes testing
 def finish_rating(event):
     if event and (len(choice.get()) != 0):
+        get_curr_time()
         result.append(choice.get())
-        save_result(vid_queue[step - 1], choice.get())
+        result.append(time_stamp)
+        save_result(vid_queue[step - 1], choice.get(), time_stamp)
         os.chdir(os.path.dirname(os.getcwd()))
         f = open("result.csv", "a", newline="")
         writer = csv.writer(f)
@@ -215,11 +224,18 @@ def finish_rating(event):
         sys.exit(0)
 
 
+# gets time stamp
+def get_curr_time():
+    global time_stamp
+    time_temp = time.time()
+    time_stamp = datetime.datetime.fromtimestamp(time_temp).strftime('%Y-%m-%d %H:%M:%S')
+
+
 # saves result to database
-def save_result(vid_id, rate):
+def save_result(vid_id, rate, time_temp):
     try:
-        my_cursor.execute("insert into expEvaluation(student_id, video_id, evaluation)"
-                          " values('%s', '%s', '%s')" % (registration_box.get(), vid_id, rate))
+        my_cursor.execute("insert into expEvaluation(student_id, video_id, evaluation, time_stamp)"
+                          " values('%s', '%s', '%s', '%s')" % (registration_box.get(), vid_id, rate, time_temp))
         db.commit()
         print("updated database successful")
     except Exception as e:
