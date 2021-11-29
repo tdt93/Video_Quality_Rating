@@ -43,20 +43,20 @@ A simple app to watch and rate given videos based on the quality.
   
 + **pip Library**, **Pillow Image Library** and **PyMySQL package** for **Python**:
         
-   To install the libraries, packages (On both **Windows** and **MacOS**), open **Command Prompt**:   
+   To install the libraries, packages (On both **Windows** and **MacOS**), open **Command Prompt** and run:   
     + For **pip Library**: `python -m ensurepip --upgrade`, more detail can be found on [pip documentation](https://pip.pypa.io/en/stable/installation/) 
     + For **Pillow Image Library**: `python -m pip install Pillow` 
     + For **PyMySQL package**: `python -m pip install PyMySQL`, more detail can be found on [PyMySQL](https://pypi.org/project/PyMySQL/)
     
-   To install on **Linux**, open **Terminal**:
+   To install on **Linux**, open **Terminal** and run:
     + For **pip Library**: `sudo apt install python3-pip`
     + For **Pillow Image Library**: `sudo apt install python3-Pillow` 
     + For **PyMySQL package**: `sudo apt install python3-pymysql` 
     
 + **Videos for experiment**: 
   + Download the videos for testing:
-    +  [Monday_Group.zip](https://drive.google.com/file/d/1qTmiInYrBu5rGkOU-U6WCG969eW_mpIK/view?usp=sharing)
-    +  [Thursday_Group.zip](https://drive.google.com/file/d/1YMnzW6_iQvR777wGWbddLs7P6DrofgpI/view?usp=sharing)
+    +  [Monday_Group.zip](https://drive.google.com/file/d/1jjoDG5JyC5KLv2ekNddikpnHEQRAaQdk/view?usp=sharing)
+    +  [Thursday_Group.zip](https://drive.google.com/file/d/1ALyRvkUoc8jlqPG1eSH4PBJUmxOUcaJS/view?usp=sharing)
   + Unzip the folder and relocate the unzipped one to where the **Video_Quality_Rating** is located (the folder should be named with the tittle `Monday_Group` or `Thursday_Group`). 
   
   For example: The directory to `Monday_Group` should be: `...\Video_Quality_Rating\Monday_Group\[videos_here]`
