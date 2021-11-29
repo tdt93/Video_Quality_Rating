@@ -8,18 +8,18 @@ A simple app to watch and rate given videos based on the quality.
   + To install: Go to [**FFmpeg** download page](https://www.ffmpeg.org/download.html). Download the campatible version for your OS, extract the folder.
      
    On **WINDOWS:**
-    1. Rename the folder to: ffmpeg
-    2. Copy/Cut folder to **C Drive** (C:\)
+    1. Rename the folder to: **ffmpeg**
+    2. Copy/Cut folder to **C Drive** (the path should be: `C:\ffmpeg`)
     3. Open **Environment variables control panel**:
         + Open search bar
         + Type: *system variables*, open: **Edit the system environment variables**
         + Click **Environment variables**
         + In **System variables**, select *Path*, select *Edit*
         + In new **Edit environment variable** window, select *New*
-        + Copy and paste the path to `...\ffmpeg\bin` from above here 
+        + Type `C:\ffmpeg\bin` here 
         + Click *OK* to save changes <br />
         
-  More detail [here](https://windowsloop.com/install-ffmpeg-windows-10/)
+  More detail [in English](https://windowsloop.com/install-ffmpeg-windows-10/) | [in Polish](https://soundartifacts.com/pl/how-to/186-how-to-install-ffmpeg-on-windows-10-amp-add-ffmpeg-to-windows-path.html)
 
     On **MacOS:**
     1. Press `Command+Space`, and type Terminal.
@@ -70,4 +70,4 @@ The program is given to the two group to test.
 To run the application, open **Command Prompt** where the application located, type: `python app.py`
 
 After each video, observer will be asked to rate the quality of the watched video. 
-The result of the test will be saved to *result.csv* file.
+At the end, observer will be redirected to the Questionnaire page to finish the test.
