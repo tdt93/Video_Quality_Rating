@@ -33,7 +33,7 @@ step = 0
 time_stamp = ""
 result = []
 path = os.getcwd()
-url = "https://google.com"
+url = "https://psychocracow.fra1.qualtrics.com/jfe/form/SV_5o4u1gnnML5umQC"
 
 # connects to database
 db = pymysql.connect(host="mysql.agh.edu.pl", port=3306, user="thang", passwd="rKPwvXqUNxX4meuv", database="thang")
