@@ -1,24 +1,31 @@
 # Video Quality Rating
 A simple app to watch and rate given videos based on the quality.
+An **AGH** experiment.
 
-## Requirements:
+## Requirements: (preferably to be performed on Windows)
+
++ From this repository: Download as ZIP and extract for the *application folder*
 
 + **ffmpeg**: A collection of libraries and tools to process multimedia content such as audio, video, subtitles and related metadata.
   + To check if **ffmpeg** is installed, open **Command Prompt**, type: `ffmpeg`
-  + To install: Go to [**FFmpeg** download page](https://www.ffmpeg.org/download.html). Download the campatible version for your OS, extract the folder.
+  + To install: Go to [**FFmpeg** download page](https://www.ffmpeg.org/download.html). Download the campatible version for Windows: 
+    + Current version: [*builds from gyan.dev*](https://www.gyan.dev/ffmpeg/builds/).
+    + Download: *ffmpeg-git-essentials.7z*
      
    On **WINDOWS:**
-    1. Rename the folder to: **ffmpeg**
+    1. Extract and rename the folder to: **ffmpeg**
     2. Copy/Cut folder to **C Drive** (the path should be: `C:\ffmpeg`)
-    3. Open **Environment variables control panel**:
+    3. Open the **ffmpeg** folder, get the Path to the sub folder as: `C:\ffmpeg\...\bin`, copy the Path
+    4. Open **Environment variables control panel**:
         + Open search bar
         + Type: *system variables*, open: **Edit the system environment variables**
         + Click **Environment variables**
         + In **System variables**, select *Path*, select *Edit*
         + In new **Edit environment variable** window, select *New*
-        + Type `C:\ffmpeg\bin` here 
+        + Paste the Path from above here (`C:\ffmpeg\...\bin`)
         + Click *OK* to save changes <br />
         
+    5. Open **Command Prompt**, type: `ffmpeg` and check if the command works properly.
   More detail [in English](https://windowsloop.com/install-ffmpeg-windows-10/) | [in Polish](https://soundartifacts.com/pl/how-to/186-how-to-install-ffmpeg-on-windows-10-amp-add-ffmpeg-to-windows-path.html)
 
     On **MacOS:**
@@ -54,7 +61,7 @@ A simple app to watch and rate given videos based on the quality.
     + For **PyMySQL package**: `sudo apt install python3-pymysql` 
     
 + **Videos for experiment**: 
-  + Download the videos for testing:
+  + Download the videos for testing according to the group of the participant:
     +  [Monday_Group.zip](https://drive.google.com/file/d/1jjoDG5JyC5KLv2ekNddikpnHEQRAaQdk/view?usp=sharing)
     +  [Thursday_Group.zip](https://drive.google.com/file/d/1ALyRvkUoc8jlqPG1eSH4PBJUmxOUcaJS/view?usp=sharing)
   + Unzip the folder and relocate the unzipped one to where the **Video_Quality_Rating** is located (the folder should be named with the tittle `Monday_Group` or `Thursday_Group`). 
@@ -63,11 +70,19 @@ A simple app to watch and rate given videos based on the quality.
   
 ## Testing:
 
+To run the application, open **Command Prompt** where the *application folder* located, type: `python app.py`
+
 The program is given to the two group to test. 
 + **Monday_Group**: Select **Monday Group** when entering **Student ID**.
 + **Thursday_Group**: Select **Thursday Group** when entering **Student ID**.
 
-To run the application, open **Command Prompt** where the application located, type: `python app.py`
-
 After each video, observer will be asked to rate the quality of the watched video. 
 At the end, observer will be redirected to the **Questionnaire** page to finish the test.
+
+**NOTE:** Please rename the *result.csv* in the application folder to *result_[student ID].csv* and attach to the report in **Moodle**.
+
+## Calculate Video Quality Indicators 
+
++ Go to [AGH Video Quality of Experiance](https://qoe.agh.edu.pl/indicators/) 
++ Download the executable file suited to your operating systems. 
++ Follow the instructions on the page and calculate Video Quality Indicators (VQI)  
