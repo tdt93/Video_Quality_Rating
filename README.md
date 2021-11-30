@@ -1,10 +1,10 @@
 # Video Quality Rating
-A simple app to watch and rate given videos based on the quality.
-An **AGH** experiment.
+A simple app to watch and rate given videos based on the quality.  
+An **AGH** experiment. This experiment uses the *AGH/NTIA* dataset, which is provided from Consumer Digital Video Library ([CDVL](https://www.cdvl.org/)).
 
 ## Requirements: (preferably to be performed on Windows)
 
-+ From this repository: Download as ZIP and extract for the *application folder*
++ From this repository: Download as ZIP, extract and rename the folder back to *Video_Quality_Rating*.
 
 + **ffmpeg**: A collection of libraries and tools to process multimedia content such as audio, video, subtitles and related metadata.
   + To check if **ffmpeg** is installed, open **Command Prompt**, type: `ffmpeg`
@@ -26,6 +26,7 @@ An **AGH** experiment.
         + Click *OK* to save changes <br />
         
     5. Open **Command Prompt**, type: `ffmpeg` and check if the command works properly.
+ 
   More detail [in English](https://windowsloop.com/install-ffmpeg-windows-10/) | [in Polish](https://soundartifacts.com/pl/how-to/186-how-to-install-ffmpeg-on-windows-10-amp-add-ffmpeg-to-windows-path.html)
 
     On **MacOS:**
@@ -79,7 +80,7 @@ The program is given to the two group to test.
 After each video, observer will be asked to rate the quality of the watched video. 
 At the end, observer will be redirected to the **Questionnaire** page to finish the test.
 
-**NOTE:** Please rename the *result.csv* in the application folder to *result_[student ID].csv* and attach to the report in **Moodle**.
+**NOTE:** After the test, please rename the *result.csv* in the *Video_Quality_Rating* folder to *result_[student ID].csv* and attach to the report in **Moodle**.
 
 ## Calculate Video Quality Indicators 
 
