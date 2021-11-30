@@ -70,4 +70,4 @@ The program is given to the two group to test.
 To run the application, open **Command Prompt** where the application located, type: `python app.py`
 
 After each video, observer will be asked to rate the quality of the watched video. 
-At the end, observer will be redirected to the Questionnaire page to finish the test.
+At the end, observer will be redirected to the **Questionnaire** page to finish the test.
