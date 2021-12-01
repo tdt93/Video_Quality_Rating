@@ -29,7 +29,7 @@ An **AGH** experiment. This experiment uses the *AGH/NTIA* dataset, which is pro
  
   More detail [in English](https://windowsloop.com/install-ffmpeg-windows-10/) | [in Polish](https://soundartifacts.com/pl/how-to/186-how-to-install-ffmpeg-on-windows-10-amp-add-ffmpeg-to-windows-path.html)
 
-    On **MacOS:**
+<!--    On **MacOS:**
     1. Press `Command+Space`, and type Terminal.
     2. Run the command below: 
    
@@ -47,7 +47,7 @@ An **AGH** experiment. This experiment uses the *AGH/NTIA* dataset, which is pro
       sudo apt install ffmpeg  
     It might ask for additional disk space, type **Y**, and press **Enter**
     
-  More detail [here](https://linuxhint.com/install-ffmpeg-ubuntu/)
+  More detail [here](https://linuxhint.com/install-ffmpeg-ubuntu/) -->
   
 + **pip Library**, **Pillow Image Library** and **PyMySQL package** for **Python**:
         
@@ -56,10 +56,10 @@ An **AGH** experiment. This experiment uses the *AGH/NTIA* dataset, which is pro
     + For **Pillow Image Library**: `python -m pip install Pillow` 
     + For **PyMySQL package**: `python -m pip install PyMySQL`, more detail can be found on [PyMySQL](https://pypi.org/project/PyMySQL/)
     
-   To install on **Linux**, open **Terminal** and run:
+  <!-- To install on **Linux**, open **Terminal** and run:
     + For **pip Library**: `sudo apt install python3-pip`
     + For **Pillow Image Library**: `sudo apt install python3-Pillow` 
-    + For **PyMySQL package**: `sudo apt install python3-pymysql` 
+    + For **PyMySQL package**: `sudo apt install python3-pymysql` -->
     
 + **Videos for experiment**: 
   + Download the videos for testing according to the group of the participant:
