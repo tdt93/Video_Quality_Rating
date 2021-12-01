@@ -77,7 +77,7 @@ The program is given to the two group to test.
 + **Monday_Group**: Select **Monday Group** when entering **Student ID**.
 + **Thursday_Group**: Select **Thursday Group** when entering **Student ID**.
 
-After each video, observer will be asked to rate the quality of the watched video. 
+After each video, observer will be asked to rate the quality of the watched video.   
 At the end, observer will be redirected to the [**Questionnaire page**](https://psychocracow.fra1.qualtrics.com/jfe/form/SV_5o4u1gnnML5umQC) to finish the test.
 
 **NOTE:** After the test, please rename the *result.csv* in the *Video_Quality_Rating* folder to *result_[student ID].csv* and attach to the report in **Moodle**.
