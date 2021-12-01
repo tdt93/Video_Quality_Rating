@@ -2,7 +2,7 @@
 A simple app to watch and rate given videos based on the quality.  
 An **AGH** experiment. This experiment uses the *AGH/NTIA* dataset, which is provided from Consumer Digital Video Library ([CDVL](https://www.cdvl.org/)).
 
-## Requirements: (preferably to be performed on Windows)
+## Requirements: (To be performed on Windows)
 
 + From this repository: Download as ZIP, extract and rename the folder back to *Video_Quality_Rating*.
 
