@@ -36,7 +36,7 @@ path = os.getcwd()
 url = "https://psychocracow.fra1.qualtrics.com/jfe/form/SV_5o4u1gnnML5umQC"
 
 # connects to database
-db = pymysql.connect(host="mysql.agh.edu.pl", port=3306, user="thang", passwd="rKPwvXqUNxX4meuv", database="thang")
+db = pymysql.connect(host="[MySQL_SERVER]", port=[PORT_NUMBER], user="[USERNAME]", passwd="[DB_PASS]", database="[DB_NAME]")
 my_cursor = db.cursor()
 
 
